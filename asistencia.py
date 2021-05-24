@@ -3,10 +3,12 @@ import pandas as pd
 import numpy as np
 import pybase64
 
-
 import matplotlib.image as mpimg
 from math import ceil
-
+st.set_page_config(
+page_title="Asistencia",
+layout="wide",
+)
 #st.markdown('<img style="float: left;" src="https://virtual.usal.edu.ar/branding/themes/Usal_7Julio_2017/images/60usalpad.png" />', unsafe_allow_html=True)
 st.markdown('<style>div[data-baseweb="select"] > div {text-transform: capitalize;}body{background-color:#008357;}</style>', unsafe_allow_html=True)
 st.markdown(
@@ -49,53 +51,54 @@ with buff: st.write('Período:',minValue,' al ',maxValue)
 df=df.sort_values(by=['Correo electrónico del organizador'])
    #df = pd.DataFrame(['Correo electrónico del organizador'], columns= ['Correo electrónico del organizador'])
     #BeforeSymbol = df['Correo electrónico del organizador'].str.split('@').str[0]
-df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
+#df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
 countries = df['Correo electrónico del organizador'].unique()
 
-country = buff.selectbox('Elegir Docente', countries)
-
-above_352 = df["Correo electrónico del organizador"] == country
-df=df.sort_values(by=['Fecha'],ascending=False)
+country = buff.text_input('Elegir Docente')
+if country != "":
+    #text_input_container.empty()
+    above_352 = df["Correo electrónico del organizador"] == country
+    df=df.sort_values(by=['Fecha'],ascending=False)
 
 
     #df = pd.read_csv('/mydrive/MyDrive/multiapps/bbc204.csv')
     #df=df.sort_values(by=['SessionOwner'])
     #options = ['USAL_lti_production', 'USAL_rest_production','josemarcucci']
-alumnos = df[above_352]['Identificador del participante'].unique()
+    alumnos = df[above_352]['Identificador del participante'].unique()
     #usuarios=df[above_352].groupby("Fecha")['Minutos Usados'].sum()
-usuarios=df[above_352].groupby("Fecha", as_index=False).agg({ 'Identificador del participante' : 'nunique'})
-usuarios.index = [""] * len(usuarios)
-usuarios=usuarios.sort_values(by=['Fecha'],ascending=False)
-usuarios.columns = ['Fecha','Cantidad de Participantes']
-buff.table(usuarios)
+    usuarios=df[above_352].groupby("Fecha", as_index=False).agg({ 'Identificador del participante' : 'nunique'})
+    usuarios.index = [""] * len(usuarios)
+    usuarios=usuarios.sort_values(by=['Fecha'],ascending=False)
+    usuarios.columns = ['Fecha','Cantidad de Participantes']
+    buff.table(usuarios)
 
     
-dias = df[above_352]['Fecha'].unique()
+    dias = df[above_352]['Fecha'].unique()
     
     
-with col:st.write("Detalle de asistentes")
-buff1, col5, buff25,col25 = st.beta_columns([3,1,1,2])
-dia = col.selectbox('Elegir Fecha', dias)
-above_3521 = df["Fecha"] == dia
+    with col:st.write("Detalle de asistentes")
+    buff1, col5, buff25,col25 = st.beta_columns([3,1,1,2])
+    dia = col.selectbox('Elegir Fecha', dias)
+    above_3521 = df["Fecha"] == dia
      #asistencia2=df[above_352][above_3521][['Identificador del participante','Duración']]
-asistencia2=df[above_352][above_3521].groupby(['Fecha','Nombre del participante'],as_index=False)['Duración'].sum()
+    asistencia2=df[above_352][above_3521].groupby(['Fecha','Nombre del participante'],as_index=False)['Duración'].sum()
      #asistencia2=df[above_352][above_3521].groupby(['Nombre del participante', 'Fecha']).agg({ 'Duración' : 'sum'})
 
      #asistencia2.columns = ['Fecha','Nombre','Duración']
 
     #st.table(df[['Fecha','Código de reunión','Identificador del participante','Tipo de cliente','Correo electrónico del organizador','Duración','Nombre del participante']])
-asistencia2.index = [""] * len(asistencia2)  
+    asistencia2.index = [""] * len(asistencia2)  
 
 
-import matplotlib.pyplot as plt
+    import matplotlib.pyplot as plt
 
-from matplotlib.backends.backend_pdf import PdfPages 
+    from matplotlib.backends.backend_pdf import PdfPages 
    
-col.table(asistencia2)
-export_as_pdf = col.button("Exportar PDF")
+    col.table(asistencia2)
+    export_as_pdf = col.button("Exportar PDF")
 
-if export_as_pdf:
-   with PdfPages('/mydrive/MyDrive/IdisMeet/asistencia_'+maxValue+'.pdf') as pdf:
+    if export_as_pdf:
+      with PdfPages('/mydrive/MyDrive/IdisMeet/asistencia_'+maxValue+'.pdf') as pdf:
         table = pd.DataFrame(asistencia2)
         header = table.columns
         table = np.asarray(table)
