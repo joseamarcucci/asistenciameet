@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import pybase64
 
-from data.create_data import create_table
+
 import matplotlib.image as mpimg
 from math import ceil
 
