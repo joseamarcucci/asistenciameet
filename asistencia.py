@@ -63,22 +63,23 @@ st.markdown(
    
 st.markdown("<h2 style='text-align: left; color: #00b8e1;'>Asistencia por Docente</h2>", unsafe_allow_html=True)
 buff, col = st.beta_columns([2,2])
-    #SHEET_ID = '12D4hfpuIkT7vM69buu-v-r-UYb8xx4wM1zi-34Fs9ck'
-df = pd.read_csv('https://docs.google.com/spreadsheets/d/1sHkx_qlz7hNogun235B5_nEcLguVYRr6cRtk6rRF0wo/export?format=csv')
-   
-    
-df['Fecha'] = pd.to_datetime(df['Fecha']).dt.strftime('%d-%m-%y')
-maxValue = df['Fecha'].max()
-minValue = df['Fecha'].min()
-with buff: st.write('Período:',minValue,' al ',maxValue)
-df=df.sort_values(by=['Correo electrónico del organizador'])
-   #df = pd.DataFrame(['Correo electrónico del organizador'], columns= ['Correo electrónico del organizador'])
-    #BeforeSymbol = df['Correo electrónico del organizador'].str.split('@').str[0]
-#df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
-countries = df['Correo electrónico del organizador'].unique()
 
 country = buff.text_input('Elegir Docente')
 if country != "":
+    
+    #SHEET_ID = '12D4hfpuIkT7vM69buu-v-r-UYb8xx4wM1zi-34Fs9ck'
+    df = pd.read_csv('https://docs.google.com/spreadsheets/d/1sHkx_qlz7hNogun235B5_nEcLguVYRr6cRtk6rRF0wo/export?format=csv')
+   
+    
+    df['Fecha'] = pd.to_datetime(df['Fecha']).dt.strftime('%d-%m-%y')
+    maxValue = df['Fecha'].max()
+    minValue = df['Fecha'].min()
+    with buff: st.write('Período:',minValue,' al ',maxValue)
+    df=df.sort_values(by=['Correo electrónico del organizador'])
+   #df = pd.DataFrame(['Correo electrónico del organizador'], columns= ['Correo electrónico del organizador'])
+    #BeforeSymbol = df['Correo electrónico del organizador'].str.split('@').str[0]
+#df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
+    countries = df['Correo electrónico del organizador'].unique()
     #text_input_container.empty()
     above_352 = df["Correo electrónico del organizador"] == country
     df=df.sort_values(by=['Fecha'],ascending=False)
