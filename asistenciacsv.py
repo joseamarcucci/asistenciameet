@@ -168,7 +168,7 @@ if uploaded_files:
             fig.savefig(tmpfile.name,dpi=150) 
             pdf.image(tmpfile.name, 0, 5, 200, 200)
 #html = create_download_link(pdf.output(dest="S").encode("latin-1"), "asistencia_"+str(maxValue))
-     b64 = pybase64.b64encode(pdf.output(dest="S").encode("latin-1"))  # val looks like b'...'
-     linki=f'<a class="css-qbe2hs" href="data:application/octet-stream;base64,{b64.decode()}" download="asistencia_'+str(maxValue)+'.pdf">Bajar PDF</a>'
-     c3.markdown(linko, unsafe_allow_html=True)
-     c4.markdown(linki, unsafe_allow_html=True)
+    b64 = pybase64.b64encode(pdf.output(dest="S").encode("latin-1"))  # val looks like b'...'
+    linki=f'<a class="css-qbe2hs" href="data:application/octet-stream;base64,{b64.decode()}" download="asistencia_'+str(maxValue)+'.pdf">Bajar PDF</a>'
+    c3.markdown(linko, unsafe_allow_html=True)
+    c4.markdown(linki, unsafe_allow_html=True)
