@@ -100,9 +100,10 @@ if country != "":
     dias = df[above_352]['Fecha'].unique()
     
     
-    with col:st.write("Detalle de asistentes")
+    
     buff1, col5, buff25,col25 = st.beta_columns([3,1,1,2])
     dia = col.selectbox('Elegir Fecha', dias)
+    with col:st.write("Detalle de asistentes")
     above_3521 = df["Fecha"] == dia
      #asistencia2=df[above_352][above_3521][['Identificador del participante','Duración']]
     asistencia2=df[above_352][above_3521].groupby(['Fecha','Nombre del participante'],as_index=False)['Duración'].sum()
