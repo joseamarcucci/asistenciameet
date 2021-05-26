@@ -61,10 +61,10 @@ st.markdown(
     </style>
 """, unsafe_allow_html=True) 
    
-st.markdown("<h2 style='text-align: left; color: #00b8e1;'>Asistencia por Docente</h2>", unsafe_allow_html=True)
+#st.markdown("<h2 style='text-align: left; color: #00b8e1;'>Asistencia</h2>", unsafe_allow_html=True)
 buff, col = st.beta_columns([2,2])
 
-country = buff.text_input('Elegir Docente')
+country = buff.text_input('Ingrese mail USAL')
 if country != "":
     
     #SHEET_ID = '12D4hfpuIkT7vM69buu-v-r-UYb8xx4wM1zi-34Fs9ck'
