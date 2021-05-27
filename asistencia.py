@@ -146,7 +146,7 @@ if country != "":
     with col:st.write("Detalle de asistentes")
     above_3521 = df["Fecha"] == dia
      #asistencia2=df[above_352][above_3521][['Identificador del participante','Duración']]
-    asistencia2=df[above_352][above_3521].groupby(['Fecha','Participante'],as_index=False)['Duración'].sum()
+    asistencia2=df[above_352][above_3521].groupby(['Fecha','Nombre del Participante'],as_index=False)['Duración'].sum()
      #asistencia2=df[above_352][above_3521].groupby(['Nombre del participante', 'Fecha']).agg({ 'Duración' : 'sum'})
 
      #asistencia2.columns = ['Fecha','Nombre','Duración']
