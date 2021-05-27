@@ -149,7 +149,7 @@ if country != "":
     asistencia2=df[above_352][above_3521].groupby(['Fecha','Nombre del participante'],as_index=False)['Duración'].sum()
      #asistencia2=df[above_352][above_3521].groupby(['Nombre del participante', 'Fecha']).agg({ 'Duración' : 'sum'})
 
-     #asistencia2.columns = ['Fecha','Nombre','Duración']
+    asistencia2.columns = ['Fecha','Nombre','Duración']
 
     #st.table(df[['Fecha','Código de reunión','Identificador del participante','Tipo de cliente','Correo electrónico del organizador','Duración','Nombre del participante']])
     asistencia2.index = [""] * len(asistencia2) 
