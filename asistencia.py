@@ -53,15 +53,7 @@ st.markdown(
     -webkit-box-align: center;
     align-items: center;
     }
-    .st-af {
-    font-size: 12px;
-}
-p, ol, ul, dl {
-    margin: 0px 0px 1rem;
-    padding: 0px;
-    font-size: 12px;
-    font-weight: 400;
-}
+
     .css-qbe2hs {
     display: inline-flex;
     -webkit-box-align: center;
