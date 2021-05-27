@@ -106,7 +106,7 @@ p, ol, ul, dl {
 buff, col = st.beta_columns([2,2])
 
 country = buff.text_input('Ingrese mail USAL',value='@usal.edu.ar')
-if country != "":
+if country != "@usal.edu.ar":
     
     #SHEET_ID = '12D4hfpuIkT7vM69buu-v-r-UYb8xx4wM1zi-34Fs9ck'
     df = pd.read_csv('https://docs.google.com/spreadsheets/d/1sHkx_qlz7hNogun235B5_nEcLguVYRr6cRtk6rRF0wo/export?format=csv')
