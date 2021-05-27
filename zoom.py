@@ -64,7 +64,7 @@ st.markdown("<h2 style='text-align: left; color: #00b8e1;'>Asistencia a proyecto
 buff, col = st.beta_columns([2,2])
     #SHEET_ID = '12D4hfpuIkT7vM69buu-v-r-UYb8xx4wM1zi-34Fs9ck'
 
-data = [['Elaboración de un proyecto de investigación en Ciencias Sociales y Humanísticas', '965178173'], ['Elaboración de un proyecto de investigación en Ciencias Naturales y Exactas', '1829217201']]
+data = [['Elaboración de un proyecto de investigación en Ciencias Sociales y Humanísticas', '965178173'], ['Elaboración de un proyecto de investigación en Ciencias Naturales y Exactas', '1829217201'],['SIGEVA USAL- Banco de Datos de CyT', '1107659696']]
 
 # Create the pandas DataFrame
 df0 = pd.DataFrame(data, columns=['Name', 'ID'])
