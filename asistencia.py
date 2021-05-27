@@ -18,7 +18,20 @@ layout="wide",
 st.markdown('<style>div[data-baseweb="select"] > div {text-transform: capitalize;}body{background-color:#008357;}</style>', unsafe_allow_html=True)
 st.markdown(
     """<style>
-        
+        .css-19ih76x {
+    border-top: 1px solid rgba(38, 39, 48, 0.1);
+    border-bottom: 1px solid rgba(38, 39, 48, 0.1);
+    vertical-align: middle;
+    padding: 0.25rem;
+    text-align: center;
+    /* font-size: 1px; */
+}
+.css-d56p6e {
+    border-top: 1px solid rgba(38, 39, 48, 0.1);
+    border-bottom: 1px solid rgba(38, 39, 48, 0.1);
+    vertical-align: middle;
+    padding: 0.25rem;
+}
         .css-17eq0hr {
     background-color: #00b8e1;
     background-attachment: fixed;
@@ -40,6 +53,33 @@ st.markdown(
     -webkit-box-align: center;
     align-items: center;
     }
+    .st-af {
+    font-size: 12px;
+}
+p, ol, ul, dl {
+    margin: 0px 0px 1rem;
+    padding: 0px;
+    font-size: 12px;
+    font-weight: 400;
+}
+    .css-qbe2hs {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: 400;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    margin: 0px;
+    line-height: 1.6;
+    color: inherit;
+    width: auto;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(38, 39, 48, 0.2);
+}
          .css-qbe2hs {
     display: inline-flex;
     -webkit-box-align: center;
@@ -106,7 +146,7 @@ if country != "":
     with col:st.write("Detalle de asistentes")
     above_3521 = df["Fecha"] == dia
      #asistencia2=df[above_352][above_3521][['Identificador del participante','Duración']]
-    asistencia2=df[above_352][above_3521].groupby(['Fecha','Nombre del participante'],as_index=False)['Duración'].sum()
+    asistencia2=df[above_352][above_3521].groupby(['Fecha','Participante'],as_index=False)['Duración'].sum()
      #asistencia2=df[above_352][above_3521].groupby(['Nombre del participante', 'Fecha']).agg({ 'Duración' : 'sum'})
 
      #asistencia2.columns = ['Fecha','Nombre','Duración']
