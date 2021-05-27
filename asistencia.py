@@ -32,6 +32,15 @@ st.markdown(
     vertical-align: middle;
     padding: 0.25rem;
 }
+p, ol, ul, dl {
+    margin: 0px 0px 1rem;
+    padding: 0px;
+    font-size: 12px;
+    font-weight: 400;
+}
+.st-af {
+    font-size: 12px;
+}
         .css-17eq0hr {
     background-color: #00b8e1;
     background-attachment: fixed;
