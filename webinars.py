@@ -61,7 +61,7 @@ st.markdown(
     </style>
 """, unsafe_allow_html=True) 
 
-st.markdown("<h2 style='text-align: left; color: #00b8e1;'>Registración a Webinars 2021</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: left; color: #00b8e1;'>Registración a Webinars USAL 2021</h2>", unsafe_allow_html=True)
 buff, col = st.beta_columns([2,2])
 
     #SHEET_ID = '12D4hfpuIkT7vM69buu-v-r-UYb8xx4wM1zi-34Fs9ck'
