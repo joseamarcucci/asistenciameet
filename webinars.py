@@ -10,7 +10,7 @@ from fpdf import FPDF
 
 from tempfile import NamedTemporaryFile
 st.set_page_config(
-page_title="Asistencia",
+page_title="Registración a Webinars",
 page_icon="https://webinars.usal.edu.ar/sites/default/files/favicon.ico",
 layout="wide",
 )
