@@ -11,6 +11,7 @@ from fpdf import FPDF
 from tempfile import NamedTemporaryFile
 st.set_page_config(
 page_title="Asistencia",
+page_icon="https://webinars.usal.edu.ar/sites/default/files/favicon.ico",
 layout="wide",
 )
     #st.markdown('<img style="float: left;" src="https://virtual.usal.edu.ar/branding/themes/Usal_7Julio_2017/images/60usalpad.png" />', unsafe_allow_html=True)
