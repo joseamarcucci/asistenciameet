@@ -68,7 +68,7 @@ buff, col = st.beta_columns([2,2])
 
 #data = [['Elaboración de un proyecto de investigación en Ciencias Sociales y Humanísticas', '965178173'], ['Elaboración de un proyecto de investigación en Ciencias Naturales y Exactas', '1829217201']]
 data=pd.read_csv('https://docs.google.com/spreadsheets/d/1gltz1w3wS4krdU7md1vocTENb_ufRCGiKn2AUAuRFRc/export?format=csv')
-
+data=data.sort_values(by=['orden'],ascending=False)
 # Create the pandas DataFrame
 #df0 = pd.DataFrame(data, columns=['Webinar', 'Planilla'])
 
