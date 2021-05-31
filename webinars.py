@@ -62,28 +62,32 @@ st.markdown(
 """, unsafe_allow_html=True) 
 
 st.markdown("<h2 style='text-align: left; color: #00b8e1;'>Registración a Webinars USAL 2021</h2>", unsafe_allow_html=True)
-buff, col = st.beta_columns([2,2])
+buff1,buff, col = st.beta_columns([1,2,2])
 
     #SHEET_ID = '12D4hfpuIkT7vM69buu-v-r-UYb8xx4wM1zi-34Fs9ck'
 
 #data = [['Elaboración de un proyecto de investigación en Ciencias Sociales y Humanísticas', '965178173'], ['Elaboración de un proyecto de investigación en Ciencias Naturales y Exactas', '1829217201']]
 data=pd.read_csv('https://docs.google.com/spreadsheets/d/1gltz1w3wS4krdU7md1vocTENb_ufRCGiKn2AUAuRFRc/export?format=csv')
-data=data.sort_values(by=['orden'],ascending=False)
+
 # Create the pandas DataFrame
 #df0 = pd.DataFrame(data, columns=['Webinar', 'Planilla'])
 
 values = data['Webinar'].tolist()
 options = data['Planilla'].tolist()
+
 dic = dict(zip(options, values))
+
 
 a = buff.selectbox('Seleccionar Webinar:', options, format_func=lambda x: dic[x])
 
 
 df = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=csv')
+reunion = data['Planilla'] ==a
+df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
 inscriptostodos=df[['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
 inscriptostodos.index = [""] * len(inscriptostodos) 
 
-df5=pd.value_counts(df['Correo electrónico'])
+df5=pd.value_counts(df['Correo electrónico']) 
 times3t=df5.index
 aulast=len(times3t) 
 with buff:st.write('Cantidad de inscriptos:',aulast) 
@@ -91,19 +95,45 @@ csv = inscriptostodos.to_csv(index=False)
 b64 = pybase64.b64encode(csv.encode()).decode()  # some strings
 linko= f'<a class="css-qbe2hs" href="data:file/csv;base64,{b64}" download="inscriptos.csv">Bajar csv</a>'
 buff.markdown(linko, unsafe_allow_html=True)
+b=str(data[reunion]['zoom'].max())
 
-if buff.checkbox('Ver todos'):
-   buff.table(inscriptostodos) 
+#with col:st.bar_chart(inscriptostodos['Desea recibir información de la actividades de la Universidad:'])
+df2 = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=csv&gid='+b)
+
+#df['Hora para unirse'] = pd.to_datetime(df['Hora para unirse']).dt.strftime('%d/%m/%y')
+
+#sala=df['sala'].unique()
+
+    #df=df.sort_values(by=['Correo electrónico del organizador'])
+    
+#df=df.sort_values(by=['Hora para unirse'],ascending=False)
+usuarios=df2.groupby("Nombre (nombre original)", as_index=False).agg({ 'Duración (minutos)' : 'sum'})
+usuarios.index = [""] * len(usuarios)
+#df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
+#usuarios=usuarios.sort_values(by=['Correo electrónico del organizador'])
+usuarios.columns = ['Usuario','Duración (minutos)']
+
+ 
+
+
+
+
+   
+  
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
 countries = df['Marca temporal'].unique()
 #st.bar_chart(inscriptostodos)
-country = buff.selectbox('Elegir Fecha', countries)
+country = buff1.selectbox('Elegir Fecha', countries) 
 above_352 = df["Marca temporal"] == country
 df5=pd.value_counts(df[above_352]['Correo electrónico'])
 times3t=df5.index
+with buff1:st.write('Cantidad de inscriptos esa fecha:',aulast)
 aulast=len(times3t) 
+if buff1.checkbox('Ver todos los inscriptos'):
+   buff.table(inscriptostodos)
+if buff1.checkbox('Ver participantes en Zoom'):
+   buff.table(usuarios)
 
-with buff:st.write('Cantidad de inscriptos esa fecha:',aulast)
 
 inscriptos=df[above_352][['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
 inscriptos.index = [""] * len(inscriptos)  
