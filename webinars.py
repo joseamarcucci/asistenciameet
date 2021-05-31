@@ -108,6 +108,9 @@ df2 = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=cs
     
 #df=df.sort_values(by=['Hora para unirse'],ascending=False)
 usuarios=df2.groupby("Nombre (nombre original)", as_index=False).agg({ 'Duración (minutos)' : 'sum'})
+df5=pd.value_counts(usuarios['Nombre (nombre original)'])
+times3tz=df5.index
+aulastz=len(times3tz) 
 usuarios.index = [""] * len(usuarios)
 #df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
 #usuarios=usuarios.sort_values(by=['Correo electrónico del organizador'])
@@ -133,6 +136,7 @@ aulast=len(times3t)
 if buff1.checkbox('Ver todos los inscriptos'):
    buff.table(inscriptostodos)
 if buff1.checkbox('Ver participantes en Zoom'):
+   with buff:st.write('Cantidad de participantes Zoom:',aulastz)
    buff.table(usuarios)
 
 
