@@ -127,6 +127,7 @@ country = buff1.selectbox('Elegir Fecha', countries)
 above_352 = df["Marca temporal"] == country
 df5=pd.value_counts(df[above_352]['Correo electrónico'])
 times3t=df5.index
+aulast=len(times3t) 
 with buff1:st.write('Cantidad de inscriptos esa fecha:',aulast)
 aulast=len(times3t) 
 if buff1.checkbox('Ver todos los inscriptos'):
