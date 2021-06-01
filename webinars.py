@@ -18,7 +18,12 @@ layout="wide",
 st.markdown('<style>div[data-baseweb="select"] > div {text-transform: capitalize;}body{background-color:#008357;}</style>', unsafe_allow_html=True)
 st.markdown(
     """<style>
-        
+        .css-5h0m38 {
+    display: inline-flex;
+    flex-direction: column;
+    border: 2px solid rgb(246, 51, 102);
+    border-radius: 3px;
+}
         .css-17eq0hr {
     background-color: #00b8e1;
     background-attachment: fixed;
