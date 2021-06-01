@@ -114,6 +114,7 @@ aulastz=len(times3tz)
 usuarios.index = [""] * len(usuarios)
 #df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
 #usuarios=usuarios.sort_values(by=['Correo electrónico del organizador'])
+tiempo=usuarios['Duración (minutos)'].max()
 usuarios.columns = ['Usuario','Duración (minutos)']
 
  
@@ -158,6 +159,7 @@ elif (display_code == "Total de Inscriptos"):
 
 else:
   with buff1:st.write('Cantidad de participantes Zoom:',aulastz)
+  with buff1:st.write('Duración de la reunión Zoom:',tiempo,' min')
   buff.table(usuarios)
 
 
