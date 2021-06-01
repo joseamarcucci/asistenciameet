@@ -129,13 +129,18 @@ usuarios.columns = ['Usuario','Duración (minutos)']
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
 countries = df['Marca temporal'].unique()
 #st.bar_chart(inscriptostodos)
-country = buff1.selectbox('Elegir Fecha', countries) 
-above_352 = df["Marca temporal"] == country
-df5=pd.value_counts(df[above_352]['Correo electrónico'])
-times3t=df5.index
-aulast=len(times3t) 
-with buff1:st.write('Cantidad de inscriptos esa fecha:',aulast)
-aulast=len(times3t) 
+if display_code == "Inscriptos por fecha":
+  country = buff1.selectbox('Elegir Fecha', countries) 
+  above_352 = df["Marca temporal"] == country
+  df5=pd.value_counts(df[above_352]['Correo electrónico'])
+  times3t=df5.index
+  aulast=len(times3t) 
+  with buff1:st.write('Cantidad de inscriptos esa fecha:',aulast)
+  aulast=len(times3t) 
+
+
+  inscriptos=df[above_352][['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
+  inscriptos.index = [""] * len(inscriptos)  
 #if buff1.checkbox('Ver todos los inscriptos'):
    #buff.table(inscriptostodos)
 #if buff1.checkbox('Ver participantes en Zoom'):
@@ -148,7 +153,7 @@ inscriptos.index = [""] * len(inscriptos)
 #df.columns = ['Marca temporal','Apellido']
 
 #buff.table(inscriptos)
-display_code =   buff1.radio("Mostrar", ( "Inscriptos por fecha","Total de Inscriptos", "Participantes en Zoom"))
+#display_code =   buff1.radio("Mostrar", ( "Inscriptos por fecha","Total de Inscriptos", "Participantes en Zoom"))
 
 if display_code == "Inscriptos por fecha":
     buff.table(inscriptos)
