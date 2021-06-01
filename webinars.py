@@ -95,7 +95,9 @@ csv = inscriptostodos.to_csv(index=False)
 b64 = pybase64.b64encode(csv.encode()).decode()  # some strings
 linko= f'<a class="css-qbe2hs" href="data:file/csv;base64,{b64}" download="inscriptos.csv">Bajar csv</a>'
 buff.markdown(linko, unsafe_allow_html=True)
+imagen=str(data[reunion]['imagen'].max())
 b=str(data[reunion]['zoom'].max())
+with buff1:st.image(imagen, width=None)
 
 #with col:st.bar_chart(inscriptostodos['Desea recibir información de la actividades de la Universidad:'])
 df2 = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=csv&gid='+b)
