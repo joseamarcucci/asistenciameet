@@ -127,6 +127,7 @@ usuarios.columns = ['Usuario','Duración (minutos)']
    
   
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
+display_code =   buff1.radio("Mostrar", ( "Inscriptos por fecha","Total de Inscriptos", "Participantes en Zoom"))
 countries = df['Marca temporal'].unique()
 #st.bar_chart(inscriptostodos)
 if display_code == "Inscriptos por fecha":
