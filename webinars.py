@@ -133,18 +133,35 @@ times3t=df5.index
 aulast=len(times3t) 
 with buff1:st.write('Cantidad de inscriptos esa fecha:',aulast)
 aulast=len(times3t) 
-if buff1.checkbox('Ver todos los inscriptos'):
-   buff.table(inscriptostodos)
-if buff1.checkbox('Ver participantes en Zoom'):
-   with buff:st.write('Cantidad de participantes Zoom:',aulastz)
-   buff.table(usuarios)
+#if buff1.checkbox('Ver todos los inscriptos'):
+   #buff.table(inscriptostodos)
+#if buff1.checkbox('Ver participantes en Zoom'):
+   #with buff:st.write('Cantidad de participantes Zoom:',aulastz)
+   #buff.table(usuarios)
 
 
 inscriptos=df[above_352][['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
 inscriptos.index = [""] * len(inscriptos)  
 #df.columns = ['Marca temporal','Apellido']
 
-buff.table(inscriptos)
+#buff.table(inscriptos)
+display_code =   buff1.radio("Mostrar", ( "Inscriptos por fecha","Total de Inscriptos", "Participantes en Zoom"))
+
+if display_code == "Inscriptos por fecha":
+    buff.table(inscriptos)
+
+
+
+elif (display_code == "Total de Inscriptos"):
+    buff.table(inscriptostodos)
+
+
+else:
+  with buff1:st.write('Cantidad de participantes Zoom:',aulastz)
+  buff.table(usuarios)
+
+
+   
 
 #sala=df['sala'].unique()
 
