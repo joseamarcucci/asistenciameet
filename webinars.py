@@ -154,8 +154,7 @@ if display_code == "Inscriptos por fecha":
    #buff.table(usuarios)
 
 
-inscriptos=df[above_352][['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
-inscriptos.index = [""] * len(inscriptos)  
+ 
 #df.columns = ['Marca temporal','Apellido']
 
 #buff.table(inscriptos)
