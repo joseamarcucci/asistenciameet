@@ -83,13 +83,13 @@ options = data['Planilla'].tolist()
 dic = dict(zip(options, values))
 
 
-a = buff.selectbox('Seleccionar Webinar:', options, format_func=lambda x: dic[x])
+a = buff.selectbox('Seleccionar actividad:', options, format_func=lambda x: dic[x])
 
 
 df = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=csv')
 reunion = data['Planilla'] ==a
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
-inscriptostodos=df[['Marca temporal','Apellido','Nombre', 'Número de DNI','Conferencia a la que desea asistir','Institución','Correo electrónico','Cómo conoció la actividad?','País']] 
+inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
 inscriptostodos.index = [""] * len(inscriptostodos) 
 
 df5=pd.value_counts(df['Correo electrónico']) 
