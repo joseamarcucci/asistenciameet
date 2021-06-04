@@ -105,7 +105,7 @@ buff.markdown(linko, unsafe_allow_html=True)
 imagen=str(data[reunion]['imagen'].max())
 link=str(data[reunion]['link'].max())
 b=str(data[reunion]['zoom'].max())
-with buff1:st.markdown("<a href='"+link+"' target='_blank'><img src='"+imagen+"' style='width:90%;border-radius:30px;'></a>", unsafe_allow_html=True)
+with buff1:st.markdown("<a href='"+link+"' target='_blank'><img src='"+imagen+"' style='width:90%;border-radius:3px;'></a>", unsafe_allow_html=True)
 #with buff1:st.image(imagen, width=None)
 
 #with col:st.bar_chart(inscriptostodos['Desea recibir información de la actividades de la Universidad:'])
