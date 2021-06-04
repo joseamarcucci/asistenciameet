@@ -63,6 +63,8 @@ st.markdown(
     border: 1px solid rgba(38, 39, 48, 0.2);
 }
      .css-qbe2hs a{ text-decoration: none;}
+     img {
+    border: 2px solid rgb(246, 51, 102);
     </style>
 """, unsafe_allow_html=True) 
 
