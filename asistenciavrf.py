@@ -10,7 +10,7 @@ from fpdf import FPDF
 
 from tempfile import NamedTemporaryFile
 st.set_page_config(
-page_title="Registración a Webinars",
+page_title="Actividades VRF",
 page_icon="https://webinars.usal.edu.ar/sites/default/files/favicon.ico",
 layout="wide",
 )
@@ -114,15 +114,15 @@ df2 = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=cs
     #df=df.sort_values(by=['Correo electrónico del organizador'])
     
 #df=df.sort_values(by=['Hora para unirse'],ascending=False)
-usuarios=df2.groupby("Nombre (nombre original)", as_index=False).agg({ 'Duración (minutos)' : 'sum'})
-df5=pd.value_counts(usuarios['Nombre (nombre original)'])
-times3tz=df5.index
-aulastz=len(times3tz) 
-usuarios.index = [""] * len(usuarios)
+#usuarios=df2.groupby("Nombre (nombre original)", as_index=False).agg({ 'Duración (minutos)' : 'sum'})
+#df5=pd.value_counts(usuarios['Nombre (nombre original)'])
+#times3tz=df5.index
+#aulastz=len(times3tz) 
+#usuarios.index = [""] * len(usuarios)
 #df['Correo electrónico del organizador'] = df['Correo electrónico del organizador'].str.split('@').str[0]
 #usuarios=usuarios.sort_values(by=['Correo electrónico del organizador'])
-tiempo=usuarios['Duración (minutos)'].max()
-usuarios.columns = ['Usuario','Duración (minutos)']
+#tiempo=usuarios['Duración (minutos)'].max()
+#usuarios.columns = ['Usuario','Duración (minutos)']
 
  
 
@@ -145,7 +145,7 @@ if display_code == "Inscriptos por fecha":
   aulast=len(times3t) 
 
 
-  inscriptos=df[above_352][['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
+  inscriptos=df[above_352][['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
   inscriptos.index = [""] * len(inscriptos)  
 #if buff1.checkbox('Ver todos los inscriptos'):
    #buff.table(inscriptostodos)
