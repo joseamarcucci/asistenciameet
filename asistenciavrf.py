@@ -3,7 +3,8 @@ import pandas as pd
 import numpy as np
 import pybase64
 import io
-
+from bokeh.plotting import figure
+import bokeh, bokeh.plotting
 
 import matplotlib.pyplot as plt
 from fpdf import FPDF
@@ -93,7 +94,18 @@ reunion = data['Planilla'] ==a
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
 inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI ','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
 inscriptostodos.index = [""] * len(inscriptostodos) 
-
+      
+df99 = pd.DataFrame({
+"Fecha": inscriptostodos['Marca temporal'],"Nombre":inscriptostodos['Nombre'],"Apellido": inscriptostodos['Apellido'],"País": inscriptostodos['País'],"Institución": inscriptostodos['Institución']
+})
+cds = ColumnDataSource(df99)
+columns = [
+TableColumn(field="Fecha", title="Fecha",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 200),
+TableColumn(field="Nombre", title="Nombre",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 300),
+TableColumn(field="links", title="Grabacion", formatter=HTMLTemplateFormatter(template='<a href="<%= value %>"target="_blank"><%= value %></a>'),width = 400),
+]
+p = DataTable(source=cds, columns=columns, css_classes=["my_table"],index_position=None,width=1000, height=250)
+st.bokeh_chart(p) 
 df5=pd.value_counts(df['Correo electrónico']) 
 times3t=df5.index
 aulast=len(times3t) 
