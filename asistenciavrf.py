@@ -96,13 +96,17 @@ inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 
 inscriptostodos.index = [""] * len(inscriptostodos) 
       
 df99 = pd.DataFrame({
-"Fecha": inscriptostodos['Marca temporal'],"Nombre":inscriptostodos['Nombre'],"Apellido": inscriptostodos['Apellido'],"País": inscriptostodos['País'],"Institución": inscriptostodos['Institución']
+"Fecha": inscriptostodos['Marca temporal'],"Nombre":inscriptostodos['Nombre'],"Apellido": inscriptostodos['Apellido'],"'Correo electrónico": inscriptostodos['Correo electrónico'],"País": inscriptostodos['País'],"Institución": inscriptostodos['Institución']
 })
 cds = ColumnDataSource(df99)
 columns = [
 TableColumn(field="Fecha", title="Fecha",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 200),
-TableColumn(field="Nombre", title="Nombre",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 300),
-TableColumn(field="links", title="Grabacion", formatter=HTMLTemplateFormatter(template='<a href="<%= value %>"target="_blank"><%= value %></a>'),width = 400),
+TableColumn(field="Nombre", title="Nombre",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 200),
+TableColumn(field="Apellido", title="Apellido",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 200),
+TableColumn(field="Conferencia", title="Conferencia",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 200),  
+TableColumn(field="País", title="País",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 200),
+TableColumn(field="Institución", title="Institución",formatter=HTMLTemplateFormatter(template='<%= value %>'),width = 200),
+#TableColumn(field="links", title="Grabacion", formatter=HTMLTemplateFormatter(template='<a href="<%= value %>"target="_blank"><%= value %></a>'),width = 400),
 ]
 p = DataTable(source=cds, columns=columns, css_classes=["my_table"],index_position=None,width=1000, height=250)
 st.bokeh_chart(p) 
