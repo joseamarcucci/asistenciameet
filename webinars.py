@@ -169,7 +169,7 @@ if display_code == "Total de Inscriptos":
 
 
 
-elif (display_code == "Inscriptos por fecha":
+elif display_code == "Inscriptos por fecha":
     buff.table(inscriptos)
 
 
