@@ -164,13 +164,13 @@ if display_code == "Inscriptos por fecha":
 #buff.table(inscriptos)
 #display_code =   buff1.radio("Mostrar", ( "Inscriptos por fecha","Total de Inscriptos", "Participantes en Zoom"))
 
-if display_code == "Inscriptos por fecha":
-    buff.table(inscriptos)
-
-
-
-elif (display_code == "Total de Inscriptos"):
+if display_code == "Total de Inscriptos":
     buff.table(inscriptostodos)
+
+
+
+elif (display_code == "Inscriptos por fecha":
+    buff.table(inscriptos)
 
 
 else:
