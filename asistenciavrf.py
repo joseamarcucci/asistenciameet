@@ -138,7 +138,7 @@ df2 = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=cs
    
   
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
-display_code =   buff1.radio("Mostrar", ( "Inscriptos por fecha","Total de Inscriptos", "Participantes en Zoom"))
+display_code =   buff1.radio("Mostrar", ( "Total de Inscriptos","Inscriptos por fecha", "Participantes en Zoom"))
 countries = df['Marca temporal'].unique()
 #st.bar_chart(inscriptostodos)
 if display_code == "Inscriptos por fecha":
