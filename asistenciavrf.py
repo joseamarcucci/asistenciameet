@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import pybase64
 import io
+
 from bokeh.plotting import figure
 import bokeh, bokeh.plotting
 
@@ -91,9 +92,12 @@ a = buff.selectbox('Seleccionar actividad:', options, format_func=lambda x: dic[
 
 df = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=csv')
 reunion = data['Planilla'] ==a
+#df['Marca temporal'] = json.dumps(df['Marca temporal'], default=str)
+#st.write(fechaJSONData)
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
+
 inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI ','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
-inscriptostodos.index = [""] * len(inscriptostodos) 
+df.index = [""] * len(df) 
       
  
 df5=pd.value_counts(df['Correo electrónico']) 
@@ -172,7 +176,8 @@ if display_code == "Inscriptos por fecha":
 
 
 elif (display_code == "Total de Inscriptos"):
-    buff.table(inscriptostodos)
+    buff.table(df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI ','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
+)
 
 
 else:
@@ -228,3 +233,4 @@ buffi, coli = st.beta_columns([1,2])
 #export_as_pdf = st.button("Export Report")
 
 #if export_as_pdf:
+
