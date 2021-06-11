@@ -93,7 +93,7 @@ reunion = data['Planilla'] ==a
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
 df=df.sort_values(by=['Marca temporal'] ,ascending=False)
 inscriptostodos=df[['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
-inscriptostodos.index = [""] * len(inscriptostodos) 
+df.index = [""] * len(df) 
 
 df5=pd.value_counts(df['Correo electrónico']) 
 times3t=df5.index
