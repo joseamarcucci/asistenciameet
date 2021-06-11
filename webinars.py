@@ -91,6 +91,7 @@ a = buff.selectbox('Seleccionar Webinar:', options, format_func=lambda x: dic[x]
 df = pd.read_csv('https://docs.google.com/spreadsheets/d/'+a+'/export?format=csv')
 reunion = data['Planilla'] ==a
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
+df=df.sort_values(by=['Marca temporal'] ,ascending=False)
 inscriptostodos=df[['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] 
 inscriptostodos.index = [""] * len(inscriptostodos) 
 
@@ -165,7 +166,7 @@ if display_code == "Inscriptos por fecha":
 #display_code =   buff1.radio("Mostrar", ( "Inscriptos por fecha","Total de Inscriptos", "Participantes en Zoom"))
 
 if display_code == "Total de Inscriptos":
-    buff.table(inscriptostodos)
+    buff.table(df[['Marca temporal','Apellido','Nombre', 'Documento ','Institución a la que pertenece','Ocupación','Correo electrónico','Como conoció el Webinar','Desea recibir información de la actividades de la Universidad:']] )
 
 
 
