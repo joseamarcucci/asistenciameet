@@ -95,7 +95,7 @@ reunion = data['Planilla'] ==a
 #df['Marca temporal'] = json.dumps(df['Marca temporal'], default=str)
 #st.write(fechaJSONData)
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
-df.sort_values(by=['Marca temporal'],ascending=False)
+df=df.sort_values(by=['Marca temporal'],ascending=False)
 inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI ','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
 df.index = [""] * len(df) 
       
