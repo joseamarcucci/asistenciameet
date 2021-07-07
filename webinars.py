@@ -176,8 +176,8 @@ elif display_code == "Inscriptos por fecha":
 
 else:
   with buff1:st.write('Cantidad de inscriptos:',aulast) 
-  with buff1:st.write('Cantidad de participantes Zoom:',aulastz)
-  with buff1:st.write('Duración de la reunión Zoom:',tiempo,' min')
+  with buff1:st.write('Participantes Zoom:',aulastz)
+  with buff1:st.write('Duración del Zoom:',tiempo,' min')
   buff.table(usuarios)
 
 
