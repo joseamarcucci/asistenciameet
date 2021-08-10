@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run activiadesvrf.py
+web: sh setup.sh && streamlit run asistenciavrf.py
