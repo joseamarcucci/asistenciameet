@@ -97,7 +97,7 @@ reunion = data['Planilla'] ==a
 df['Marca temporal'] = pd.to_datetime(df['Marca temporal']).dt.strftime('%d/%m/%y')
 df=df.sort_values(by=['Marca temporal'],ascending=False)
 #inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI ','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
-inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Documento ','Cómo conoció la actividad']] 
+inscriptostodos=df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Documento','Cómo conoció la actividad']] 
 df.index = [""] * len(df) 
       
  
