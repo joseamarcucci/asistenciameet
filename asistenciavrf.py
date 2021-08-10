@@ -156,7 +156,7 @@ if display_code == "Inscriptos por fecha":
   aulast=len(times3t) 
 
 
-  inscriptos=df[above_352][['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI ','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
+  inscriptos=df[above_352][['Marca temporal','Apellido','Nombre','Correo electrónico', 'Documento','Cómo conoció la actividad']]  
   inscriptos.index = [""] * len(inscriptos)  
 #if buff1.checkbox('Ver todos los inscriptos'):
    #buff.table(inscriptostodos)
@@ -177,7 +177,7 @@ if display_code == "Inscriptos por fecha":
 
 
 elif (display_code == "Total de Inscriptos"):
-    buff.table(df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Número de DNI ','Cómo conoció la actividad?','Conferencia a la que desea asistir','País','Institución']] 
+    buff.table(df[['Marca temporal','Apellido','Nombre','Correo electrónico', 'Documento','Cómo conoció la actividad']]  
 )
 
 
